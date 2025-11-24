@@ -4,16 +4,16 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
+@ConfigGroup("osrsvoiceover")
 public interface VoiceoverConfig extends Config
 {
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+		keyName = "enabled",
+		name = "Enabled",
+		description = "Is the plugin turned on?"
 	)
-	default String greeting()
+	default boolean enabled()
 	{
-		return "Hello";
+		return true;
 	}
 }
