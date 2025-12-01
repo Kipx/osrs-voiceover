@@ -1,13 +1,9 @@
 package com.osrsvoiceover;
 
-import javazoom.jl.converter.Converter;
-import javazoom.jl.decoder.JavaLayerException;
 import lombok.Getter;
 
 import javax.sound.sampled.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 
 @Getter
 public class AudioHandler implements LineListener {
@@ -18,20 +14,7 @@ public class AudioHandler implements LineListener {
 
     boolean isPlaybackCompleted;
 
-    public void createAudioFile(InputStream inputStream) throws IOException, JavaLayerException {
-        File outputFile =  new File(path + ".mp3");
-        if (outputFile.getParentFile().isDirectory() || outputFile.mkdirs()) {
-            Converter conv = new Converter();
-            Files.copy(inputStream, outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            inputStream.close();
-            conv.convert(path + ".mp3", path + ".wav");
-        }
-        else {
-            System.out.println("Unable to create directory for " + path);
-        }
-    }
-
-    public void playAudioFile(Float volume) throws LineUnavailableException, IOException, UnsupportedAudioFileException, JavaLayerException {
+    public void playAudioFile(Float volume) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(path + ".wav"));
         Clip audioClip = AudioSystem.getClip();
