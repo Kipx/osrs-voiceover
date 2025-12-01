@@ -10,6 +10,10 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import com.fasterxml.uuid.Generators;
+import com.fasterxml.uuid.impl.NameBasedGenerator;
+
+import java.util.UUID;
 
 @Slf4j
 @PluginDescriptor(
@@ -41,6 +45,9 @@ public class VoiceoverPlugin extends Plugin
             if (message.getType() == ChatMessageType.DIALOG) {
                 String msg = message.getMessage();
                 System.out.println(msg);
+                NameBasedGenerator gen = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_DNS);
+                UUID id = gen.generate(msg);
+                System.out.println(id.toString());
             }
         }
     }

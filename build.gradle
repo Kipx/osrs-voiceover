@@ -21,8 +21,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.30'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
     implementation 'javazoom:jlayer:1.0.1'
+    implementation 'com.fasterxml.uuid:java-uuid-generator:4.3.0'
 
-	testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
